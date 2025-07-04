@@ -30,7 +30,7 @@ app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
 // ✅ CORS for API routes
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://doc-sign-khaki.vercel.app/"],
   credentials: true,
 }));
 
