@@ -40,7 +40,7 @@ const SignedPdfList = ({ refreshTrigger }) => {
 
     const handleViewSignedPdf = async (doc) => {
         try {
-            const res = await axios.get(`http://localhost:3000/api/signatures/generate/${doc._id}`, {
+            const res = await axios.get(`https://docsign-md45.onrender.com/api/signatures/generate/${doc._id}`, {
                 withCredentials: true,
             });
             setSignedPdfUrl(res.data.signedUrl);
