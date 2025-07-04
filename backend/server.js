@@ -16,17 +16,17 @@ const app = express();
 app.use(express.json({ limit: "1MB" }));
 app.use(express.urlencoded({ limit: "1MB", extended: true }));
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
-// ✅ Add CORS headers manually for static files (MUST be above static middleware)
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173", "https://doc-sign-khaki.vercel.app/");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
+// // Add CORS headers manually for static files (MUST be above static middleware)
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5173", "https://doc-sign-khaki.vercel.app/");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   next();
+// });
 
 // ✅ Serve PDF uploads with correct CORS headers
-app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
 // ✅ CORS for API routes
 app.use(cors({
